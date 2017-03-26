@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.kim.examalram">
+
+    <uses-permission android:name="android.permission.VIBRATE" />"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="대학수학능력시험 도우미"
+        android:supportsRtl="true"
+        android:theme="@style/CustomActionBarTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".KSAT.KSATActivity" />
+        <activity android:name=".KSAT.KoreanActivity" />
+        <activity android:name=".KSAT.MathActivity" />
+        <activity android:name=".KSAT.EnglishActivity" />
+        <activity android:name=".KSAT.OtherActivity" />
+        <activity android:name=".KSAT.SecondLanguageActivity" />
+        <activity android:name=".SETTING.Setting" />
+        <activity android:name=".CHART.DatabaseTest" />
+        <activity android:name=".STUDY.CheckStudyTimeActivity" />
+        <service android:name=".STUDY.CheckStudyTimeService"/>
+
+    </application>
+
+</manifest>
