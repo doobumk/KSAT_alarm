@@ -3,23 +3,14 @@ package com.example.kim.examalram.STUDY;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.Dialog;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
+
 import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.Build;
-import android.os.IBinder;
-
-
-import android.provider.Settings;
-import android.support.v4.content.PermissionChecker;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -50,9 +41,7 @@ public class CheckStudyTimeActivity extends Activity {
     TextView checkStudyTime_only;
     TextView studyTimePercent;
     IntentFilter intentFilter;
-    String result;
     String aResult,bResult,cResult,dResult;
-    String mResult;
     int hour,minute,second,total;
     int mSec, mMin, mHour;
     int aSec, aMin, aHour;
@@ -67,14 +56,11 @@ public class CheckStudyTimeActivity extends Activity {
             if (serviceClass.getName().equals(service.service.getClassName())) {
                 Log.d("SERVICE RUNNIG","TRUE");
                 return true;
-
             }
         }
         Log.d("SERVICE RUNNIG","FALSE");
         return false;
     }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +107,9 @@ public class CheckStudyTimeActivity extends Activity {
                         mStatus=RUNNING;
                         setStudyTime.setEnabled(false);
                         start.setText("일시 정지");
+                        if(second+minute+hour==0){
+                            Toast.makeText(getApplicationContext(),"목표 공부시간이 입력되지않음",Toast.LENGTH_LONG).show();
+                        }
 
                         break;
                     case RUNNING:
@@ -259,22 +248,26 @@ public class CheckStudyTimeActivity extends Activity {
                 checkStudyTime.setText(bResult);
                 studyTimePercent.setText("");
                 checkStudyTime_only.setText("");
-                Toast.makeText(getApplicationContext(),"목표 공부시간이 입력되지않음",Toast.LENGTH_LONG).show();
+
             }
             if(second+minute+hour !=0){
                 total = (second+minute*60+hour*60*60)-(mSec+mMin*60+mHour*60*60);
-                aSec = total % 60;
-                aMin = total / 60 % 60;
-                aHour = total / 3600;
-                bResult = String.format("%02d:%02d:%02d",mHour,mMin,mSec);
-                cResult = String.format("%02d:%02d:%02d",aHour,aMin,aSec);
-                dResult =  Integer.toString(100*(mSec+mMin*60+mHour*60*60)/(second+minute*60+hour*60*60));
-                checkStudyTime.setText(bResult);
-                studyTimePercent.setText(dResult +"%");
-                checkStudyTime_only.setText(cResult);
+                    aSec = total % 60;
+                    aMin = total / 60 % 60;
+                    aHour = total / 3600;
+                    bResult = String.format("%02d:%02d:%02d", mHour, mMin, mSec);
+                    cResult = String.format("%02d:%02d:%02d", aHour, aMin, aSec);
+                    dResult = Integer.toString(100 * (mSec + mMin * 60 + mHour * 60 * 60) / (second + minute * 60 + hour * 60 * 60));
+                    checkStudyTime.setText(bResult);
+                studyTimePercent.setText(dResult + "%");
+                if(total <=0){
+                    checkStudyTime_only.setText("목표 달성");
+                }
+                if(total > 0) {
+                    checkStudyTime_only.setText(cResult);
+                }
+
             }
-
-
         }
     }
 

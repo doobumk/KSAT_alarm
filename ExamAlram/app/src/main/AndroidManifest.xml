@@ -28,6 +28,7 @@
         <activity android:name=".CHART.DatabaseTest" />
         <activity android:name=".STUDY.CheckStudyTimeActivity" />
         <service android:name=".STUDY.CheckStudyTimeService"/>
+        <service android:name=".MODE.ModeService"/>
 
     </application>
 

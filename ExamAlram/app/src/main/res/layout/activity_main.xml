@@ -5,11 +5,49 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:background="#f9dd9f">
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90sp"/>
+        android:layout_marginTop="20sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10sp"
+        >
+
+        <TextView
+            android:id="@+id/juneExam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#f7dfaa"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sepExam"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:background="#d6be8b"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ksat"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:background="#c48700"
+            android:textStyle="bold"/>
+    </LinearLayout>
     <GridView
+        android:layout_marginTop="20sp"
     android:id="@+id/grid"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

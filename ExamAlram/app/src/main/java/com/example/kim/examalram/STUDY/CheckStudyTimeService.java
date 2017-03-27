@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -38,21 +39,19 @@ public class CheckStudyTimeService extends Service {
     TimeThread thread;
 
 
-    int tSec,tMin,tHour,mSec,mMin,mHour;
-    int count,pCount; //핸들러가 호출한 횟수를 누적할 count
-    int mCount,tCount,aCount; //빼기 전용
+    int mSec,mMin,mHour;
+    int count;//핸들러가 호출한 횟수를 누적할 count
+    int mCount,tCount;//빼기 전용
 
-    int result,time,bResult;
-    String mResult,aResult,cResult;
+    int bResult;
+    String mResult;
 
     String mStatus = "READY";
-
 
     IntentFilter filter;
     PauseReceiver pauseRecevier;
 
-    private View mView;
-    private WindowManager mManager;
+    ;
 
 
     class CheckHandler extends Handler{
@@ -117,18 +116,21 @@ public class CheckStudyTimeService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         thread = new TimeThread(new CheckHandler());
         thread.start();
+
         Log.d("쓰레드 상태1",thread.getState().toString());
         return START_NOT_STICKY;
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
+        Log.d("TAG","onUnbind 호출");
         return true;
     }
 
 
     @Override
     public void onRebind(Intent intent) {
+        Log.d("TAG","onRebind 호출");
 
     }
 
@@ -138,39 +140,14 @@ public class CheckStudyTimeService extends Service {
         stopSelf();
         unregisterReceiver(pauseRecevier);
         thread.Stop(); //스레드 정지
-        ///destroyView();
         Log.d("TAG","SEVICE ONDESTROY 작동");
 
     }
-
-    /*public void createView(){
-        LayoutInflater mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mView = mInflater.inflate(R.layout.window_view, null);
-
-        WindowManager.LayoutParams mParams = new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_PHONE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                PixelFormat.TRANSLUCENT
-                );
-
-        mManager = (WindowManager) getSystemService(WINDOW_SERVICE);
-
-
-        mManager.addView(mView, mParams); //permission 필요
-    }*/
-
-    /*public void destroyView(){
-        Log.d("TAG","destroyView 호출됨");
-        mManager.removeViewImmediate(mView);
-    }*/
 
     public class PauseReceiver extends BroadcastReceiver{
         @Override
         public void onReceive(Context context, Intent intent) {
             String status = intent.getStringExtra("STATUS");
-              String dResult = intent.getStringExtra("TIME");
             Log.d("TAG","수신시 STATUS값"+status);
             switch (status){
                 case "PAUSE":

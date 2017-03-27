@@ -34,7 +34,6 @@ import com.example.kim.examalram.SETTING.Setting;
 import com.example.kim.examalram.TimeThread;
 
 public class KoreanActivity extends Activity {
-
     SQLiteDatabase db;
     RecordTimeDBHelper recordTimeDBHelper;
     SharedPreferences sharedPreferences;
@@ -59,7 +58,6 @@ public class KoreanActivity extends Activity {
     final int READY = 0;
     final int RUNNING = 1;
     final int PAUSE = 2;
-    final int five=3;
 
     int tSec,tMin,tHour,mSec,mMin,mHour;
     int count; //핸들러가 호출한 횟수를 누적할 count
@@ -91,7 +89,7 @@ public class KoreanActivity extends Activity {
         literatureAll = (Button) findViewById(R.id.literatureAll);
 
         mp = MediaPlayer.create(this,R.raw.over);
-         backPressCloser = new BackPressCloser(this);
+        backPressCloser = new BackPressCloser(this);
 
         recordTimeDBHelper = new RecordTimeDBHelper(this);
         try{
@@ -104,7 +102,7 @@ public class KoreanActivity extends Activity {
         entire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // entire.setEnabled(false);
+                // entire.setEnabled(false);
                 nonliterature.setEnabled(false);
                 literature.setEnabled(false);
                 grammar.setEnabled(false);
@@ -243,7 +241,6 @@ public class KoreanActivity extends Activity {
                 nonliterature.setEnabled(false);
                 literature.setEnabled(false);
                 grammar.setEnabled(false);
-               // nonliteratureAll.setEnabled(false);
                 literatureAll.setEnabled(false);
 
                 flag = 4;
@@ -365,7 +362,7 @@ public class KoreanActivity extends Activity {
         if(flag == 0) {
             String timeRecord = ellapse.getText().toString();
             String subject = "korean";
-             db.execSQL("INSERT INTO timeRecord VALUES(null,'"+subject+"','" +timeRecord+"',null)");
+            db.execSQL("INSERT INTO timeRecord VALUES(null,'"+subject+"','" +timeRecord+"',null)");
         }
     }
 
@@ -417,25 +414,25 @@ public class KoreanActivity extends Activity {
 
 
     public void onDialogAlert(){
-          //  AlertDialog.Builder ab = new AlertDialog.Builder(this);
-            android.app.AlertDialog.Builder ab = new android.app.AlertDialog.Builder(this);
-            ab.setTitle("RESULT");
-            ab.setMessage("소요시간 : " + mHour + "시간 " + mMin + "분 " + mSec + "초" + "\n확인을 누르면 기록됩니다.");
-            ab.setPositiveButton("기록", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    insert();
+        //  AlertDialog.Builder ab = new AlertDialog.Builder(this);
+        android.app.AlertDialog.Builder ab = new android.app.AlertDialog.Builder(this);
+        ab.setTitle("RESULT");
+        ab.setMessage("소요시간 : " + mHour + "시간 " + mMin + "분 " + mSec + "초" + "\n확인을 누르면 기록됩니다.");
+        ab.setPositiveButton("기록", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                insert();
 
-                }
-            });
-            ab.setNeutralButton("취소", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
+            }
+        });
+        ab.setNeutralButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
 
-            ab.show();
+        ab.show();
     }
     //finish 메소드
     public void onFinish(){
@@ -450,42 +447,35 @@ public class KoreanActivity extends Activity {
                 mp.start();
             }
         }
-            onDialogAlert();
+        onDialogAlert();
+        resetTime();
+        recordTime.setText(""); // 초기화시 공백
+        record.setEnabled(false);
+        entire.setText("전체 문제(80분)");
+        record.setText("중간 시간 기록");
+        nonliterature.setText("비문학(5분)");
+        literature.setText("문학(4분30초)");
+        grammar.setText("화법/작문/어법(20분)");
+        nonliteratureAll.setText("비문학(25분)");
+        literatureAll.setText("문학(25분)");
 
-            entire.setText("전체 문제(80분)");
-            record.setText("중간 시간 기록");
-            nonliterature.setText("비문학(5분)");
-            literature.setText("문학(4분30초)");
-            grammar.setText("화법/작문/어법(20분)");
-            nonliteratureAll.setText("비문학(25분)");
-            literatureAll.setText("문학(25분)");
+        mStatus = READY;
+        mSplitCount = 0;
 
-            resetTime();
+        mThread.Stop(); //기존 스레드 정지
+        mThread = new TimeThread(mTimer);
 
-            mStatus = READY;
-            mSplitCount = 0;
-            ellapse.setText("00:00:00");
-            recordTime.setText(""); // 초기화시 공백
-            record.setEnabled(false);
-
-            mThread.Stop(); //기존 스레드 정지
-            mThread = new TimeThread(mTimer);
-
-
-            entire.setEnabled(true);
-            nonliterature.setEnabled(true);
-            literature.setEnabled(true);
-            grammar.setEnabled(true);
-            nonliteratureAll.setEnabled(true);
-            literatureAll.setEnabled(true);
-
-
-            Toast.makeText(getApplicationContext(), "실험중", Toast.LENGTH_LONG).show();
-
+        entire.setEnabled(true);
+        nonliterature.setEnabled(true);
+        literature.setEnabled(true);
+        grammar.setEnabled(true);
+        nonliteratureAll.setEnabled(true);
+        literatureAll.setEnabled(true);
 
     }
     //초기화 메소드
     public void resetTime(){
+        ellapse.setText("00:00:00");
         count=0;
         tCount=0;
         mCount = 0;
@@ -503,14 +493,13 @@ public class KoreanActivity extends Activity {
     }
 
     public void onDestroy() {
-       // mTimer.removeMessages(0);
         mThread.Stop();
         resetTime();
         super.onDestroy();
     }
 
     //경과시간 측정
-   public String getEllapse() {
+    public String getEllapse() {
         mResult = String.format("%02d:%02d:%02d",tHour,tMin,tSec);
         return mResult;
     }
@@ -537,9 +526,9 @@ public class KoreanActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }
+
+
 
 
 

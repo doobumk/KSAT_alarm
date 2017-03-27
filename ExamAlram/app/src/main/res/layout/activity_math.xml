@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
-            android:id="@+id/ellapse"
+            android:id="@+id/math_ellapse"
             android:gravity="center"
             android:textSize="60sp"
             android:textStyle="bold"/>
@@ -38,8 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
-            android:text="전체 문제(80분)"
-            android:id="@+id/entire"
+            android:text="전체 문제(100분)"
+            android:id="@+id/math_entire"
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"/>
         <Button
@@ -49,91 +49,16 @@
             android:layout_weight="1"
             android:textSize="20sp"
             android:text="중간 시간 기록"
-            android:id="@+id/record"
+            android:id="@+id/math_record"
             android:layout_marginRight="10sp"/>
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="지문 별 시간 측정"
-        android:textSize="25sp"
-        android:layout_marginTop="15sp"
-        android:layout_marginLeft="10sp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10sp">
-        <Button
-
-            android:layout_marginRight="10sp"
-            android:background="#ffb000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="비문학(5분)"
-            android:id="@+id/nliterature"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
-        <Button
-            android:background="#ffb000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="문학(4분30초)"
-            android:id="@+id/literature"
-            android:textSize="20sp"
-            android:layout_weight="1"
-            />
-    </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="파트 별 시간 측정"
-        android:textSize="25sp"
-        android:layout_marginTop="15sp"
-        android:layout_marginLeft="10sp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10sp">
-        <Button
-            android:background="#ffb000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="화법/작문/어법(20분)"
-            android:id="@+id/grammar"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            android:layout_marginRight="10sp"/>
-        <Button
-            android:background="#ffb000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="비문학(25분)"
-            android:id="@+id/nliteratureAll"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            android:layout_marginRight="10sp"/>
-        <Button
-            android:background="#ffb000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="문학(25분)"
-            android:id="@+id/literatureAll"
-            android:textSize="15sp"
-            android:layout_weight="1"
-
-            />
-    </LinearLayout>
-
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10sp"
-        android:textSize="10sp"
-        android:id="@+id/recordtext"/>
+        android:textSize="15sp"
+        android:id="@+id/math_recordtext"/>
 
 </LinearLayout>
