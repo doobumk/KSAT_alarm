@@ -5,29 +5,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.PixelFormat;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.os.Messenger;
-import android.support.annotation.IntDef;
-import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.Toast;
-
-
-import com.example.kim.examalram.R;
 import com.example.kim.examalram.TimeThread;
-
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * Created by User on 2017-03-15.
