@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_ksat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#f9dd9f"
-    tools:context="com.doobumk.kim.examalram.KSAT.KSATActivity">
+    android:background="#f9dd9f">
 
     <TextView
         android:layout_marginTop="20sp"
@@ -24,48 +22,57 @@
             android:layout_margin="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="국어 영역(80분)"
+            android:text="공부 시간 통계"
             android:textSize="20sp"
-            android:id="@+id/korean"
+            android:id="@+id/static_studytime"
             android:background="#ffb000"/>
 
         <Button
             android:layout_margin="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="수학 영역(100분)"
+            android:text="국어 영역 통계"
             android:textSize="20sp"
-            android:id="@+id/math"
+            android:id="@+id/static_korean"
             android:background="#ffb000"/>
 
         <Button
             android:layout_margin="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="영어 영역(70분)"
+            android:text="수학 영역 통계"
             android:textSize="20sp"
-            android:id="@+id/english"
+            android:id="@+id/static_math"
             android:background="#ffb000"/>
 
         <Button
             android:layout_margin="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="한국사/사회/과학/직업 탐구 영역(30분)"
+            android:text="영어 영역 통계"
             android:textSize="20sp"
-            android:id="@+id/others"
+            android:id="@+id/static_english"
             android:background="#ffb000"/>
 
         <Button
             android:layout_margin="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="제2외국어/한문 영역(40분)"
+            android:text="한국사/사회/과학/직업 탐구 영역 통계"
             android:textSize="20sp"
-            android:id="@+id/second"
+            android:id="@+id/static_others"
             android:background="#ffb000"/>
 
+        <Button
+            android:layout_margin="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="제2외국어/한문 영역 통계"
+            android:textSize="20sp"
+            android:id="@+id/static_second"
+            android:background="#ffb000"/>
     </LinearLayout>
+
 
 
 </LinearLayout>

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="#f9dd9f"
 
-    tools:context="com.example.kim.examalram.KSAT.KoreanActivity">
+    tools:context="com.doobumk.kim.examalram.KSAT.KoreanActivity">
 
     <LinearLayout
         android:layout_marginTop="20sp"

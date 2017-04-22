@@ -1,36 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kim.examalram">
+    package="com.doobumk.kim.examalram"
+    android:versionCode="2"
+    android:versionName="1.1">
 
-    <uses-permission android:name="android.permission.VIBRATE" />"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    "/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="대학수학능력시험 도우미"
         android:supportsRtl="true"
         android:theme="@style/CustomActionBarTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.doobumk.kim.examalram.MainActivity"/>
+        <activity android:name="com.doobumk.kim.examalram.KSAT.KSATActivity" />
+        <activity android:name="com.doobumk.kim.examalram.KSAT.KoreanActivity" />
+        <activity android:name="com.doobumk.kim.examalram.KSAT.MathActivity" />
+        <activity android:name="com.doobumk.kim.examalram.KSAT.EnglishActivity" />
+        <activity android:name="com.doobumk.kim.examalram.KSAT.OtherActivity" />
+        <activity android:name="com.doobumk.kim.examalram.KSAT.SecondLanguageActivity" />
+        <activity android:name="com.doobumk.kim.examalram.SETTING.Setting" />
+        <activity android:name="com.doobumk.kim.examalram.STUDY.CheckStudyTimeActivity" />
+
+        <service android:name="com.doobumk.kim.examalram.STUDY.CheckStudyTimeService" />
+        <service android:name="com.doobumk.kim.examalram.MODE.ModeService" />
+
+        <activity android:name="com.doobumk.kim.examalram.CHART.StaticActivity" />
+        <activity
+
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name="com.doobumk.kim.examalram.IntroActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".KSAT.KSATActivity" />
-        <activity android:name=".KSAT.KoreanActivity" />
-        <activity android:name=".KSAT.MathActivity" />
-        <activity android:name=".KSAT.EnglishActivity" />
-        <activity android:name=".KSAT.OtherActivity" />
-        <activity android:name=".KSAT.SecondLanguageActivity" />
-        <activity android:name=".SETTING.Setting" />
-        <activity android:name=".CHART.DatabaseTest" />
-        <activity android:name=".STUDY.CheckStudyTimeActivity" />
-        <service android:name=".STUDY.CheckStudyTimeService"/>
-        <service android:name=".MODE.ModeService"/>
-
     </application>
 
 </manifest>

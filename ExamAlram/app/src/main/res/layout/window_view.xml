@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="#f9dd9f"
-    android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/unlock"
-            android:shadowColor="@color/colorPrimaryDark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#ffb000"
-            android:text="빡공 모드 해제 하기"
+    android:orientation="vertical">
+        <LinearLayout
+            android:layout_margin="100dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
             android:textColor="@color/colorPrimaryDark"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+                android:textStyle="bold"
+            android:text="현재 집중모드 실행중입니다. 전화이외에 다른 동작은 보여지지 않습니다. 종료를 위해선 가운데 버튼을 눌러주세요"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/unlock"
+            android:background="#ffb000"
+            android:shadowColor="@color/colorPrimaryDark"
+            android:text="집중 모드 해제 하기"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+            </LinearLayout>
 </LinearLayout>
